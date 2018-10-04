@@ -1,12 +1,13 @@
-﻿using EnterprisePatterns.Api.BankAccounts.Domain.Entity;
-using EnterprisePatterns.Api.BankAccounts.Domain.Repository;
+﻿using EnterprisePatterns.Api.Client.Domain.Repository;
 using EnterprisePatterns.Api.Common.Infrastructure.Persistence.NHibernate;
 
 namespace EnterprisePatterns.Api.Client.Infrastructure.Persistence.NHibernate.Repository
 {
-    public class BankAccountNHibernateRepository : BaseNHibernateRepository<BankAccount>, IClientRepository
+    using EnterprisePatterns.Api.Client.Domain.Entity;
+
+    public class ClientNHibernateRepository : BaseNHibernateRepository<Client>, IClientRepository
     {
-        public BankAccountNHibernateRepository(UnitOfWorkNHibernate unitOfWork) : base(unitOfWork)
+        public ClientNHibernateRepository(UnitOfWorkNHibernate unitOfWork) : base(unitOfWork)
         {
         }
     }

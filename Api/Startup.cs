@@ -9,6 +9,7 @@ using AutoMapper;
 using EnterprisePatterns.Api.Common.Application;
 using EnterprisePatterns.Api.Client.Application.Assembler;
 using EnterprisePatterns.Api.Client.Domain.Repository;
+using EnterprisePatterns.Api.Client.Infrastructure.Persistence.NHibernate.Repository;
 
 namespace EnterprisePatterns.Api
 {
@@ -30,7 +31,7 @@ namespace EnterprisePatterns.Api
             var mapper = serviceProvider.GetService<IMapper>();
             services.AddSingleton(new ClientCreateAssembler(mapper));
             services.AddScoped<IUnitOfWork, UnitOfWorkNHibernate>();
-            services.AddTransient<IClientRepository, BankAccountNHibernateRepository>((ctx) =>
+            services.AddTransient<IClientRepository, ClientNHibernateRepository>((ctx) =>
             {
                 IUnitOfWork unitOfWork = ctx.GetService<IUnitOfWork>();
                 return new ClientNHibernateRepository((UnitOfWorkNHibernate)unitOfWork);
